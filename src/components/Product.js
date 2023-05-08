@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { request } from "../request";
 
 const Product = ({ data }) => {
-  const BASE_URL = process.env.BASE_URL;
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
   console.log(BASE_URL)
 
   return (
