@@ -43,7 +43,7 @@ const sliderData = [
 
 const MainSlider = () => {
   const { data } = useFetch("/products?populate=*&filters[isOnSale]=true");
-  console.log(data);
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
   return (
     <Swiper
       modules={[Pagination]}
