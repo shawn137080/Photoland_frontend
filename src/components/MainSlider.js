@@ -38,12 +38,12 @@ const sliderData = [
     title_2: "on sale",
     title_3: "Online Only",
     btnText: "shop now",
-  }
+  },
 ];
 
 const MainSlider = () => {
   const { data } = useFetch("/products?populate=*&filters[isOnSale]=true");
-  console.log(data)
+  console.log(data);
   return (
     <Swiper
       modules={[Pagination]}
@@ -52,23 +52,32 @@ const MainSlider = () => {
       className="mainSlider h-full bg-primary xl:bg-mainSlider xl:bg-no-repeat max-w-lg lg:max-w-none rounded-[8px] overflow-hidden drop-shadow-2xl"
     >
       <>
-        {sliderData.map((item, index) => (
+        {data?.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="flex flex-col lg:flex-row h-full p-[20px] md:p-[60px]">
               {/* text */}
               <div className="w-full lg:flex-1">
-                <div className="uppercase mb-1 text-center lg:text-left">{item.pretitle}</div>
-                <div className="text-3xl md:text-[46px] font-semibold uppercase leading-none text-center lg:text-left mb-8 xl:mb-20">
-                  {item.title_1}<br/>
-                  {item.title_2}<br/>
-                  {item.title_3}
+                <div className="uppercase mb-1 text-center lg:text-left">
+                  special offer
                 </div>
-                <button className="btn btn-accent mx-auto lg:mx-0">Shop Now</button>
+                <div className="text-3xl md:text-[46px] font-semibold uppercase leading-none text-center lg:text-left mb-8 xl:mb-20">
+                  New Arrivals
+                  <br />
+                  on sale
+                  <br />
+                  Online Only
+                </div>
+                <button className="btn btn-accent mx-auto lg:mx-0">
+                  Shop Now
+                </button>
               </div>
               {/* img */}
               <div className="flex-1 ">
-                <img src={item.img} alt="" 
-                className="xl:absolute xl:-right-16 xl:-bottom-12"/>
+                <img
+                  src={`${BASE_URL}${item.attributes.image.data.attributes.url}`}
+                  alt=""
+                  className="xl:absolute xl:-right-16 xl:-bottom-12"
+                />
               </div>
             </div>
           </SwiperSlide>
