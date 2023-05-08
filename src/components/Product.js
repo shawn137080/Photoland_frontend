@@ -16,7 +16,7 @@ const Product = ({ data }) => {
         <div className="w-full h-[200px] flex items-center justify-center relative">
           <img
             className="w-[160px] h-[160px] group-hover:scale-110 transition-all duration-300 ease-in-out"
-            src={`${process.env.REACT_APP_API_URL}${data.attributes.image.data.attributes.url}`}
+            src={`${process.env.BASE_URL}${data.attributes.image.data.attributes.url}`}
             alt=""
           />
         </div>
