@@ -9,8 +9,8 @@ import PromoImg1 from "../img/promo_img1.png";
 import PromoImg2 from "../img/promo_img2.png";
 
 const Hero = () => {
-  const {data} = useFetch(`/categories?populate=*&filters[isOnPromote]=true`);
-  console.log(data)
+  const { data } = useFetch(`/categories?populate=*&filters[isOnPromote]=true`);
+  console.log(data);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   return (
     <section className="mb-[30px] pt-36 lg:pt-0">
@@ -27,7 +27,27 @@ const Hero = () => {
           {/* promos */}
           <div className="flex flex-col gap-y-[30px] w-full max-w-lg mx-auto h-[500px]">
             {/* promo img1 */}
-            <div className="grad flex-1 h-[250px] rounded-[6px] overflow-hidden relative p-6">
+            {data?.map((item) => (
+              <div className="grad flex-1 h-[250px] rounded-[6px] overflow-hidden relative p-6" key={item.id}>
+                <div className="flex flex-col max-w-[144px] h-full justify-center">
+                  <div className="text-[20px] font-medium leading-tight mb-4 uppercase">
+                    {`${item.attributes.discount} off all ${item.attributes.Title} cameras`}
+                  </div>
+                  <Link
+                    to={`/products/${item.attributes.id}`}
+                    className="uppercase cursor-pointer text-accent font-bold"
+                  >
+                    Shop now
+                  </Link>
+                </div>
+                <img
+                  className="absolute z-20 -top-2 -right-6"
+                  src={`${BASE_URL}${item.attributes.cover.data.attributes.url}`}
+                  alt="promo"
+                />
+              </div>
+            ))}
+            {/* <div className="grad flex-1 h-[250px] rounded-[6px] overflow-hidden relative p-6">
               <div className="flex flex-col max-w-[144px] h-full justify-center">
                 <div className="text-[20px] font-medium leading-tight mb-4 uppercase">
                   35% off all dslr cameras
@@ -44,9 +64,9 @@ const Hero = () => {
                 src={PromoImg1}
                 alt="promo1"
               />
-            </div>
+            </div> */}
             {/* promo img2  */}
-            <div className="grad flex-1 h-[250px] rounded-[6px] overflow-hidden relative p-6">
+            {/* <div className="grad flex-1 h-[250px] rounded-[6px] overflow-hidden relative p-6">
               <div className="flex flex-col max-w-[144px] h-full justify-center">
                 <div className="text-[20px] font-medium leading-tight mb-4 uppercase">
                   25% off all mirrorless cameras
@@ -63,7 +83,7 @@ const Hero = () => {
                 src={PromoImg2}
                 alt="promo2"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
