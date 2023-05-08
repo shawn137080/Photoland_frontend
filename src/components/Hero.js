@@ -8,6 +8,9 @@ import PromoImg1 from "../img/promo_img1.png";
 import PromoImg2 from "../img/promo_img2.png";
 
 const Hero = () => {
+  const {data} = useFetch(`/products?populate=*&filters[categories][isOnPromote]=true`);
+  console.log(data)
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
   return (
     <section className="mb-[30px] pt-36 lg:pt-0">
       <div className="container mx-auto">
