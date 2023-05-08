@@ -38,7 +38,7 @@ const ProductDetails = () => {
           <div className="flex-1 lg:max-w-[40%] lg:h-[540px] grad rounded-lg flex justify-center items-center">
             <img
               className="w-full max-w-[65%]"
-              src={`http://localhost:1337${data[0].attributes.image.data.attributes.url}`}
+              src={`${process.env.REACT_APP_API_URL}${data[0].attributes.image.data.attributes.url}`}
               alt=""
             />
           </div>
