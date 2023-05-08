@@ -42,8 +42,8 @@ const sliderData = [
 ];
 
 const MainSlider = () => {
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
   const { data } = useFetch("/products?populate=*&filters[isOnSale]=true");
+  console.log(data)
   return (
     <Swiper
       modules={[Pagination]}
@@ -52,7 +52,7 @@ const MainSlider = () => {
       className="mainSlider h-full bg-primary xl:bg-mainSlider xl:bg-no-repeat max-w-lg lg:max-w-none rounded-[8px] overflow-hidden drop-shadow-2xl"
     >
       <>
-        {data?.map((item, index) => (
+        {sliderData.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="flex flex-col lg:flex-row h-full p-[20px] md:p-[60px]">
               {/* text */}
@@ -67,7 +67,7 @@ const MainSlider = () => {
               </div>
               {/* img */}
               <div className="flex-1 ">
-                <img src={`${BASE_URL}${data.attributes.image.data.attributes.url}`} alt="" 
+                <img src={item.img} alt="" 
                 className="xl:absolute xl:-right-16 xl:-bottom-12"/>
               </div>
             </div>
