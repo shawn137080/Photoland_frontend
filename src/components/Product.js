@@ -1,8 +1,12 @@
 import React from "react";
 //import Link
 import { Link } from "react-router-dom";
+import { request } from "../request";
 
 const Product = ({ data }) => {
+  const BASE_URL = process.env.BASE_URL;
+  console.log(BASE_URL)
+
   return (
     <Link to={`/product/${data.id}`}>
       <div className="group grad w-full h-[390px] rounded-[8px] overflow-hidden relative">
@@ -16,7 +20,7 @@ const Product = ({ data }) => {
         <div className="w-full h-[200px] flex items-center justify-center relative">
           <img
             className="w-[160px] h-[160px] group-hover:scale-110 transition-all duration-300 ease-in-out"
-            src={`${process.env.BASE_URL}${data.attributes.image.data.attributes.url}`}
+            src={`${BASE_URL}${data.attributes.image.data.attributes.url}`}
             alt=""
           />
         </div>
