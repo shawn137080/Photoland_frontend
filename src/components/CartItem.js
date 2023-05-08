@@ -7,12 +7,12 @@ import { CartContext } from "../context/CartContext";
 
 const CartItem = ({ item }) => {
   const { removeFromCart } = React.useContext(CartContext);
-
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
   return (
     <div className="flex gap-x-8">
       <Link to={`/product/${item.id}`} className="w-[70px] h-[70px]">
         <img
-          src={`${process.env.BASE_URL}${item.attributes.image.data.attributes.url}`}
+          src={`${BASE_URL}${item.attributes.image.data.attributes.url}`}
           alt={item.title}
         />
       </Link>

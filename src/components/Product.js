@@ -5,7 +5,6 @@ import { request } from "../request";
 
 const Product = ({ data }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  console.log(BASE_URL)
 
   return (
     <Link to={`/product/${data.id}`}>
