@@ -9,6 +9,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 //import required modules
 import { Pagination } from "swiper";
+//import useFetch hook
+import useFetch from "../hooks/useFetch";
 
 import CameraImg from "../img/camera.png";
 
@@ -18,7 +20,7 @@ const sliderData = [
     pretitle: "special offer",
     title_1: "New Arrivals",
     title_2: "on sale",
-    title_3: "on sale",
+    title_3: "Online Only",
     btnText: "shop now",
   },
   {
@@ -26,7 +28,7 @@ const sliderData = [
     pretitle: "special offer",
     title_1: "New Arrivals",
     title_2: "on sale",
-    title_3: "on sale",
+    title_3: "Online Only",
     btnText: "shop now",
   },
   {
@@ -34,20 +36,14 @@ const sliderData = [
     pretitle: "special offer",
     title_1: "New Arrivals",
     title_2: "on sale",
-    title_3: "on sale",
+    title_3: "Online Only",
     btnText: "shop now",
-  },
-  {
-    img: CameraImg,
-    pretitle: "special offer",
-    title_1: "New Arrivals",
-    title_2: "on sale",
-    title_3: "on sale",
-    btnText: "shop now",
-  },
+  }
 ];
 
 const MainSlider = () => {
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const { data } = useFetch("/products?populate=*&filters[isOnSale]=true");
   return (
     <Swiper
       modules={[Pagination]}
@@ -56,7 +52,7 @@ const MainSlider = () => {
       className="mainSlider h-full bg-primary xl:bg-mainSlider xl:bg-no-repeat max-w-lg lg:max-w-none rounded-[8px] overflow-hidden drop-shadow-2xl"
     >
       <>
-        {sliderData.map((item, index) => (
+        {data?.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="flex flex-col lg:flex-row h-full p-[20px] md:p-[60px]">
               {/* text */}
@@ -71,7 +67,7 @@ const MainSlider = () => {
               </div>
               {/* img */}
               <div className="flex-1 ">
-                <img src={item.img} alt="" 
+                <img src={`${BASE_URL}${data.attributes.image.data.attributes.url}`} alt="" 
                 className="xl:absolute xl:-right-16 xl:-bottom-12"/>
               </div>
             </div>

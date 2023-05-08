@@ -10,11 +10,10 @@ import { loadStripe } from "@stripe/stripe-js";
 import { request } from "../request";
 
 const Cart = () => {
+  const STRIPE_KEY = process.env.REACT_APP_STRIPE_KEY;
   //use cart context
   const { setIsOpen, cart, total, subtotal } = React.useContext(CartContext);
-  const stripePromise = loadStripe(
-    "pk_test_51N5CMQCF9lsfNwOvoQUV4WbQrtfIY2dOgjKitUSw5acu6I5upQu8zpYvOCVmIMpy3SSrz740iWo6ZPNy3aO8ZwZp002UsDpNb6"
-  );
+  const stripePromise = loadStripe(STRIPE_KEY);
   const handleCheckout = async () => {
     try {
       const stripe = await stripePromise;

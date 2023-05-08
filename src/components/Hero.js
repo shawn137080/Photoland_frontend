@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 //import CategoryNav
 import CategoryNav from "../components/CategoryNav";
 import MainSlider from "../components/MainSlider";
@@ -28,9 +28,12 @@ const Hero = () => {
                 <div className="text-[20px] font-medium leading-tight mb-4 uppercase">
                   35% off all dslr cameras
                 </div>
-                <a href="#" className="uppercase text-accent font-bold">
-                  shop now
-                </a>
+                <Link
+                  to={`/products/1`}
+                  className="uppercase cursor-pointer text-accent font-bold"
+                >
+                  Shop now
+                </Link>
               </div>
               <img
                 className="absolute z-20 -top-2 -right-4"
@@ -44,9 +47,12 @@ const Hero = () => {
                 <div className="text-[20px] font-medium leading-tight mb-4 uppercase">
                   25% off all mirrorless cameras
                 </div>
-                <a href="#" className="uppercase text-accent font-bold">
-                  shop now
-                </a>
+                <Link
+                  to={`/products/2`}
+                  className="uppercase cursor-pointer text-accent font-bold"
+                >
+                  Shop now
+                </Link>
               </div>
               <img
                 className="absolute z-20 top-4 -right-6"

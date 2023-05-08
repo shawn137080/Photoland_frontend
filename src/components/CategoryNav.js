@@ -15,7 +15,7 @@ const CategoryNav = () => {
           {data?.map((category) => (
             <Link to={`/products/${category.id}`} key={category.id}
             className="uppercase cursor-pointer">
-              {category.attributes.Title}
+              {category.attributes?.Title}
             </Link>
           ))}
         </div>

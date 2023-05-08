@@ -14,7 +14,6 @@ import Hero from "../components/Hero";
 const Home = () => {
   //get new products
   const { data } = useFetch("/products?populate=*&filters[isNew]=true");
-
   return (
     <section>
       <Hero />

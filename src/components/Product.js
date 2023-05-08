@@ -1,7 +1,6 @@
 import React from "react";
 //import Link
 import { Link } from "react-router-dom";
-import { request } from "../request";
 
 const Product = ({ data }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
