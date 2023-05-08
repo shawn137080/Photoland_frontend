@@ -76,7 +76,7 @@ const MainSlider = () => {
                 <img
                   src={`${BASE_URL}${item.attributes.image.data.attributes.url}`}
                   alt=""
-                  className="xl:absolute xl:-right-16 xl:-bottom-12"
+                  className="xl:-right-16 xl:-bottom-12"
                 />
               </div>
             </div>
